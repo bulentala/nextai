@@ -1,12 +1,15 @@
+// components/CodeAnalyzer.tsx
 "use client";
 
 import React, { useState } from "react";
 import ResultDisplay from "./ResultDisplay";
+import FileListDisplay from "./FileListDisplay";
 
 const CodeAnalyzer: React.FC = () => {
   const [userRequest, setUserRequest] = useState("");
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+  const [files, setFiles] = useState<string[]>([]);
 
   const handleAnalyze = async () => {
     setLoading(true);
@@ -25,6 +28,9 @@ const CodeAnalyzer: React.FC = () => {
 
       const data = await response.json();
       setResult(data.aiResult);
+
+      // Assuming the API also returns the list of scanned files
+      setFiles(data.scannedFiles || []);
     } catch (error) {
       console.error("Analiz sırasında hata:", error);
       setResult("Analiz sırasında bir hata oluştu.");
@@ -50,6 +56,7 @@ const CodeAnalyzer: React.FC = () => {
         {loading ? "Cevap alınıyor..." : "Cevap Al"}
       </button>
       <ResultDisplay result={result} />
+      <FileListDisplay files={files} />
     </div>
   );
 };
