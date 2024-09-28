@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const excludedDirs = ['node_modules', 'public', 'build', '.next', 'docs', '.git', 'fonts'];
-const excludedFiles = ['tsconfig.json','tailwind.config.ts','README.md','favicon.ico','.eslintrc.json','.gitignore','next-env.d.ts','next.config.mjs','package-lock.json','postcss.config.mjs','ProjectPrompt.md']; // Yeni eklenen satır
+const excludedFiles = ['','tailwind.config.ts','README.md','favicon.ico','.eslintrc.json','.gitignore','next-env.d.ts','next.config.mjs','package-lock.json','postcss.config.mjs','ProjectPrompt.md']; // Yeni eklenen satır
 const includedExtensions = ['.ts', '.tsx', '.js', '.jsx'];
 
 export async function scanDirectory(dir: string): Promise<string[]> {
