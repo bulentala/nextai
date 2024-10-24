@@ -11,7 +11,7 @@ export async function GET() {
     fileContent: string;
   }[] = [];
 
-  const excludeDir = [".next", "node_modules", ".git", "fonts"]; // Hariç tutulacak dizinler
+  const excludeDir = [".next", "node_modules", ".git", "fonts", "data"]; // Hariç tutulacak dizinler
   const excludeFile = [
     ".env",
     ".env.local",
@@ -25,6 +25,7 @@ export async function GET() {
     ".gitignore",
     "favicon.ico",
     "package-lock.json",
+    "pnpm-lock.yaml",
   ];
   // Dosya ve dizinleri tarayarak listeleyen bir yardımcı fonksiyon
   function scanDirectory(dir: string) {
