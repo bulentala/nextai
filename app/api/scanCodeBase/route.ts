@@ -64,5 +64,12 @@ export async function GET() {
   // Kök dizinden başlayarak tüm dosyaları tarayalım
   scanDirectory(rootDir);
 
-  return NextResponse.json({ fileList });
+  // Tarama sonucunu JSON formatında döndür
+  const response = NextResponse.json({ fileList });
+
+  // JSON verisini data/data.json dosyasına yaz
+  const outputPath = path.join(rootDir, "data", "data.json");
+  fs.writeFileSync(outputPath, JSON.stringify({ fileList }, null, 2));
+
+  return response;
 }
